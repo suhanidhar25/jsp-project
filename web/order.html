@@ -1,50 +1,157 @@
+
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>TechVibe - Order Form</title>
-    <link rel="stylesheet" href="style.css">
+
+    <title>Order Form</title>
+
+    <link rel="stylesheet" href="main.css?v=2">
+
+    <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet">
+
 </head>
 
 <body>
 
-    <div class="navbar">
+<!-- NAVBAR -->
 
-        <div class="logo">
-            <img src="images/logo.png" alt="TechVibe Logo">
-            
-        </div>
+<div class="navbar">
 
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="products.jsp">Products</a>
-            <a href="order.html">Order Form</a>
-        </div>
+    <div class="logo">
+
+        <img
+        src="images/logo.png"
+        alt="TechVibe Logo">
+
+        <span>TECHVIBE</span>
+
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="products.jsp">
+            Products
+        </a>
+
+        <a href="order.html" class="active">
+            Order Form
+        </a>
+
+        <a href="contact.jsp">
+            Contact
+        </a>
+
+        <a href="signup.jsp">
+            Sign Up
+        </a>
+
+        <a href="login.jsp">
+            Log In
+        </a>
 
     </div>
 
-    <div class="content">
+</div>
 
-        <h2>Order Form</h2>
+<!-- ORDER FORM -->
 
-        <form>
+<div class="container">
 
-            <label>Name</label>
-            <input type="text" placeholder="Enter your name">
+    <h2>Product Order Form</h2>
 
-            <label>Address</label>
-            <input type="text" placeholder="Enter your address">
+    <fieldset>
 
-            <label>Product Code</label>
-            <input type="text" placeholder="Enter product code">
+        <legend>
+            <b>Customer Information</b>
+        </legend>
 
-            <label>Product Quantity</label>
-            <input type="number" placeholder="Enter quantity">
+        <table>
 
-            <button type="submit">Submit Order</button>
+            <tr>
+                <td>Name:</td>
 
-        </form>
+                <td>
+                    <input type="text" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Address:</td>
+
+                <td>
+                    <textarea rows="4" required></textarea>
+                </td>
+            </tr>
+
+        </table>
+
+    </fieldset>
+
+    <br>
+
+    <fieldset>
+
+        <legend>
+            <b>Order Details</b>
+        </legend>
+
+        <table>
+
+            <tr>
+                <td>Product Code:</td>
+
+                <td>
+                    <input type="text" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Product Quantity:</td>
+
+                <td>
+                    <input
+                    type="number"
+                    min="1"
+                    required>
+                </td>
+            </tr>
+
+        </table>
+
+    </fieldset>
+
+    <br>
+
+    <div class="form-buttons">
+
+        <button
+        type="button"
+
+        onclick=
+        "alert('Order Submitted Successfully!')">
+
+            Place Order
+
+        </button>
+
+        <button type="reset">
+
+            Clear Form
+
+        </button>
 
     </div>
+
+</div>
 
 </body>
+
 </html>
+

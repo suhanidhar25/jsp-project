@@ -1,103 +1,134 @@
+
 <%@ page import="java.sql.*" %>
 
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Products</title>
-    <link rel="stylesheet" href="style.css">
-</head>
 
-<body>
+    <head>
 
-<!-- NAVBAR -->
+        <title>Products</title>
 
-<div class="navbar">
+        <link rel="stylesheet" href="main.css?v=2">
 
-    <div class="logo">
-        <img src="images/logo.png" alt="TechVibe Logo">
-       
-    </div>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap"
+            rel="stylesheet">
 
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="products.jsp">Products</a>
-        <a href="order.html">Order Form</a>
-    </div>
+    </head>
 
-</div>
+    <body>
 
-<!-- CONTENT -->
+        <!-- NAVBAR -->
 
-<div class="content">
+        <div class="navbar">
 
-    <h1>Our Products</h1>
+            <div class="logo">
 
-    <h2>Premium Tech Collection</h2>
+                <img
+                    src="images/logo.png"
+                    alt="TechVibe Logo">
 
-    <table>
+                <span>TECHVIBE</span>
 
-        <tr>
-            <th>Product ID</th>
-            <th>Product Name</th>
-            <th>Price</th>
-        </tr>
+            </div>
 
-<%
+            <div class="nav-links">
 
-try
-{
-    Class.forName("com.mysql.cj.jdbc.Driver");
+                <a href="index.html">Home</a>
 
-    Connection con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/store",
-        "root",
-        "12345"
-    );
+                <a href="products.jsp" class="active">
+                    Products
+                </a>
 
-    Statement stmt = con.createStatement();
+                <a href="order.html">
+                    Order Form
+                </a>
 
-    ResultSet rs = stmt.executeQuery(
-        "SELECT * FROM product_list"
-    );
+                <a href="contact.jsp">
+                    Contact
+                </a>
 
-    while(rs.next())
-    {
+                <a href="signup.jsp">
+                    Sign Up
+                </a>
 
-%>
+                <a href="login.jsp">
+                    Log In
+                </a>
 
-        <tr>
+            </div>
 
-            <td>
-                <%= rs.getString(1) %>
-            </td>
+        </div>
 
-            <td>
-                <%= rs.getString(2) %>
-            </td>
+        <!-- PRODUCTS SECTION -->
 
-            <td>
-                 <%= rs.getInt(3) %>
-            </td>
+        <section class="products">
 
-        </tr>
+            <h2>Premium Tech Collection</h2>
 
-<%
+            <div class="product-grid">
 
-    }
+                <%
 
-    con.close();
-}
+                    try {
+                        Class.forName("com.mysql.cj.jdbc.Driver");
 
-catch(Exception e)
-{
-    out.println(e);
-}
+                        Connection con = DriverManager.getConnection(
+                                "jdbc:mysql://localhost:3306/store",
+                                "root",
+                                "12345"
+                        );
 
-%>
+                        Statement stmt = con.createStatement();
 
-    </table>
+                        ResultSet rs = stmt.executeQuery(
+                                "SELECT * FROM product_list"
+                        );
 
-</div>
+                        while (rs.next()) {
 
-</body>
+                %>
+
+                <!-- PRODUCT CARD -->
+
+                <div class="product-card">
+
+
+
+                    <h3>
+                        <%= rs.getString(2)%>
+                    </h3>
+
+                    <p>
+
+                        Product ID:
+                        <%= rs.getString(1)%>
+
+                    </p>
+
+                    <p>
+
+                        <%= rs.getInt(3)%>
+
+                    </p>
+
+                </div>
+
+                <%
+
+                        }
+
+                        con.close();
+                    } catch (Exception e) {
+                        out.println(e);
+                    }
+
+                %>
+
+            </div>
+
+        </section>
+
+    </body>
+
 </html>
